@@ -8,5 +8,5 @@
             "#types/*": ["types/*"]
         }
     },
-    "include": ["stores/**/*.ts", "types/**/*.ts"]
+    "include": ["stores/**/*.ts", "types/**/*.ts", "data/**/*.ts"]
 }
