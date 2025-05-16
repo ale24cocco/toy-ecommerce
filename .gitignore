@@ -1,0 +1,68 @@
+# Node modules
+node_modules/
+.npm/
+
+# Nuxt build / generated files
+.nuxt/
+.nuxt-storybook/
+output/         # se usi `nitro` con `output`
+.dist/          # cartella di build, se la usi
+.build/         # alternate build dir
+
+# Static asset build
+public/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files
+.env
+.env.*.local
+.local.env
+
+# VSCode
+.vscode/
+.history/
+
+# Mac / Linux
+.DS_Store
+Thumbs.db
+
+# OS temp files
+*.swp
+*~
+
+# TypeScript
+*.tsbuildinfo
+
+# Optional IDE files
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Optional test coverage
+coverage/
+
+# Optional lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Optional output folders
+dist/
+build/
+
+# Strapi (se aggiungi backend in monorepo)
+backend/.cache/
+backend/build/
+backend/node_modules/
+
+# Logs
+logs/
+*.log
+
+# Certificates
+*.pem
