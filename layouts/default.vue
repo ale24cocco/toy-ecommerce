@@ -2,8 +2,15 @@
 <template>
     <header class="h-18 bg-gray-400 flex flex-1 flex-row">
         <div class="flex items-center px-10">
-            <h1 class="text-2xl font-bold">Toy Ecommerce</h1>
+            <a
+                ><NuxtLink to="/"
+                    ><h1 class="text-2xl font-bold hover:text-blue-700">
+                        Toy Ecommerce
+                    </h1></NuxtLink
+                ></a
+            >
         </div>
+
         <div
             class="bg-gray-300 flex flex-1 items-center justify-center gap-3 flex-wrap"
         >
@@ -32,8 +39,10 @@
             </div>
         </div>
     </header>
-    <main>
+
+    <main class="flex">
         <slot />
     </main>
+
     <footer class="h-40 bg-gray-400 flex flex-1"></footer>
 </template>

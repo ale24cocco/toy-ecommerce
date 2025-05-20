@@ -18,7 +18,15 @@ defineProps<{ product: Product }>();
         </div>
 
         <div class="w-50">
-            <h2 class="text-lg font-semibold">{{ product.title }}</h2>
+            <a
+                ><NuxtLink
+                    :to="{ name: 'product-id', params: { id: product.id } }"
+                    ><h2 class="text-lg font-semibold hover:text-blue-700">
+                        {{ product.title }}
+                    </h2></NuxtLink
+                ></a
+            >
+
             <p class="mt-2 text-gray-600">€ {{ product.price.toFixed(2) }}</p>
         </div>
     </div>
