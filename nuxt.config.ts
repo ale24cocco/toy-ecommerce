@@ -8,9 +8,11 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
     modules: ["@nuxt/eslint"],
     css: ["~/assets/css/main.css"],
+    components: [{ path: "~/components", pathPrefix: false }],
     alias: {
         "#types": resolve(__dirname, "types"),
         "#stores": resolve(__dirname, "stores"),
+        "#data": resolve(__dirname, "data"),
     },
     vite: {
         plugins: [tailwindcss()],

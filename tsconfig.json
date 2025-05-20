@@ -5,8 +5,15 @@
         "baseUrl": ".",
         "paths": {
             "#stores/*": ["stores/*"],
-            "#types/*": ["types/*"]
+            "#types/*": ["types/*"],
+            "#data/*": ["data/*"]
         }
     },
-    "include": ["stores/**/*.ts", "types/**/*.ts", "data/**/*.ts"]
+    "include": [
+        "stores/**/*.ts",
+        "types/**/*.ts",
+        "data/**/*.ts",
+        "components/**/*.vue",
+        "pages/**/*.vue"
+    ]
 }
