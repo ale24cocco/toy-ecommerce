@@ -5,10 +5,10 @@ defineProps<{ product: Product }>();
 
 <template>
     <div
-        class="border rounded-lg overflow-hidden px-4 py-4 flex flex-col items-center gap-2"
+        class="bg-gray-300 rounded-lg shadow-lg overflow-hidden px-4 py-4 flex flex-col items-center gap-2"
     >
         <div
-            class="border rounded-lg overflow-hidden flex items-center justify-center w-50 h-50 p-2"
+            class="bg-white rounded-lg overflow-hidden flex items-center justify-center w-50 h-50 p-2"
         >
             <img
                 :src="product.image"
@@ -27,7 +27,7 @@ defineProps<{ product: Product }>();
                 ></a
             >
 
-            <p class="mt-2 text-gray-600">€ {{ product.price.toFixed(2) }}</p>
+            <p class="mt-2 text-gray-700">€ {{ product.price.toFixed(2) }}</p>
         </div>
     </div>
 </template>
