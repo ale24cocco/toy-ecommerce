@@ -20,7 +20,7 @@ const cart = useCartStore();
         <transition name="cart-menu">
             <div
                 v-if="showMenu"
-                class="absolute border right-0 top-[41px] w-64 bg-white rounded shadow-lg z-20 p-4"
+                class="absolute border right-0 top-[41px] w-90 bg-white rounded shadow-lg z-20 p-4 flex flex-col gap-3"
             >
                 <!-- Triangolino -->
                 <svg
@@ -39,19 +39,22 @@ const cart = useCartStore();
                     />
                 </svg>
 
-                <h2 class="font-bold">Il tuo carrello</h2>
+                <!-- Titolo -->
+                <h2 class="font-bold text-xl">Il tuo carrello</h2>
 
-                <div v-if="cart.items.length">
-                    <ul class="divide-y">
+                <!-- Wrapper scrollabile -->
+                <div class="flex flex-col gap-4" v-if="cart.items.length">
+                    <ul class="divide-y overflow-y-auto max-h-70">
                         <li
                             v-for="item in cart.items"
                             :key="item.product.id"
-                            class="py-2 flex justify-between items-center text-sm"
+                            class="py-3 flex items-center text-sm"
                         >
-                            <span>{{ item.product.title }}</span>
-                            <span>x{{ item.quantity }}</span>
-                            <span class="font-bold">
-                                €{{
+                            <span class="flex-3">{{ item.product.title }}</span>
+                            <span class="flex-1">x{{ item.quantity }}</span>
+                            <span class="flex-1 font-bold">
+                                €
+                                {{
                                     (
                                         item.product.price * item.quantity
                                     ).toFixed(2)
@@ -59,18 +62,22 @@ const cart = useCartStore();
                             </span>
                         </li>
                     </ul>
-                    <div class="mt-3 text-right font-medium">
-                        Totale: €{{ cart.totalPrice.toFixed(2) }}
+
+                    <!-- Totale -->
+                    <div class="font-bold">
+                        Totale: € {{ cart.totalPrice.toFixed(2) }}
                     </div>
-                    <div class="mt-4 flex justify-between">
+
+                    <!-- Bottoni -->
+                    <div class="flex gap-2">
                         <button
-                            class="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
+                            class="flex-2 py-1 bg-green-500 text-white rounded hover:bg-green-600 cursor-pointer"
                         >
                             Checkout
                         </button>
                         <button
                             @click="cart.clearCart()"
-                            class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                            class="flex-1 py-1 bg-red-500 text-white rounded hover:bg-red-600 cursor-pointer"
                         >
                             Svuota
                         </button>
@@ -108,6 +115,6 @@ const cart = useCartStore();
     transition-delay: 0.1s; /* delay prima che parta l’animazione di entrata */
 }
 .cart-menu-leave-active {
-    transition-delay: 0.2s; /* piccolo delay anche all’uscita */
+    transition-delay: 0.3s; /* piccolo delay anche all’uscita */
 }
 </style>

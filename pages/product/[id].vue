@@ -2,10 +2,14 @@
 import { useRoute, navigateTo } from "nuxt/app";
 import { products } from "#data/products";
 import type { Product } from "#types/Product";
+import { useCartStore } from "#stores/cart";
 
 // Recupera l'id dinamico
 const route = useRoute();
 const id = route.params.id as string;
+
+//recupero l'istanza del carello
+const cart = useCartStore();
 
 // Trova il prodotto corrispondente
 const product: Product | undefined = products.find((p) => p.id === id);
@@ -43,6 +47,7 @@ if (!product) {
 
                 <button
                     class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-800 cursor-pointer"
+                    @click="cart.addItem(product)"
                 >
                     Aggiungi al carrello
                 </button>
