@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useCartStore } from "#stores/cart";
+import { ShoppingCartIcon } from "@heroicons/vue/24/outline";
 
 const showMenu = ref(false);
 const cart = useCartStore();
