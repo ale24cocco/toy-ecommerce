@@ -3,15 +3,22 @@
     "extends": "./.nuxt/tsconfig.json",
     "compilerOptions": {
         "baseUrl": ".",
+        "types": ["@nuxtjs/strapi"],
         "paths": {
-            "#stores/*": ["stores/*"],
-            "#types/*": ["types/*"],
-            "#data/*": ["data/*"]
+            "#app": [".nuxt/types/app"],
+            "#app/*": [".nuxt/types/app/*"],
+            "#imports": [".nuxt/imports.d.ts"],
+            "#imports/*": [".nuxt/imports/*"],
+            "#types": ["types/index.d.ts"]
         }
     },
     "include": [
+        "middleware/**/*.ts",
+        ".nuxt/imports.d.ts",
+        ".nuxt/types/app.d.ts",
         "stores/**/*.ts",
         "types/**/*.ts",
+        "types/**/*.d.ts",
         "data/**/*.ts",
         "components/**/*.vue",
         "pages/**/*.vue"
