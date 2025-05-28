@@ -7,47 +7,50 @@ definePageMeta({ requiresAuth: true });
 
 // Recupera l'id dinamico
 const route = useRoute();
-const id = route.params.id as string;
+const id = route.params.id;
 
 //recupero l'istanza del carello
 const cart = useCartStore();
 
-// Trova il prodotto corrispondente
-const { data: product, error } = await useStrapi().findOne("products", id, {
+// Trova il prodotto corrispondente. Tramite l'ID recuperato dalla rotta, che sarebbe il documentId del prodotto in Strapi
+const response = await useStrapi().findOne("products", id, {
     populate: ["image", "category"],
 });
 
-// Se non esiste, reindirizza alla home
-// if (!product) {
-//     navigateTo("/");
-// }
+// Salvo in maniera reattiva il prodotto
+const product = ref(response.data);
 
-// // l’URL raw (vuoto se non esiste)
-// const imgUrl = computed(() => product.value?.image?.url ?? "");
+//Se non esiste, reindirizza alla home
+if (!product) {
+    navigateTo("/");
+}
 
-// // URL completo (vuoto se non esiste)
-// const imgSrc = computed(() =>
-//     imgUrl.value ? useStrapiMedia(imgUrl.value) : ""
-// );
+// l’URL raw (vuoto se non esiste)
+const imgUrl = computed(() => product.value?.image?.url ?? "");
+
+// URL completo (vuoto se non esiste)
+const imgSrc = computed(() =>
+    imgUrl.value ? useStrapiMedia(imgUrl.value) : ""
+);
 </script>
 
 <template>
     <div
         v-if="product"
-        class="min-h-screen flex flex-1 flex-col items-center px-8"
+        class="min-h-screen flex flex-1 flex-col items-center px-8 gap-6"
     >
-        <h1 class="text-3xl font-bold animate-pulse py-10">Detail</h1>
+        <h1 class="text-3xl font-bold animate-pulse">Detail</h1>
 
         <div
-            class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col w-full p-8"
+            class="bg-gray-300 rounded-lg shadow-lg overflow-hidden flex flex-col w-full p-8"
         >
             <div class="flex items-center justify-center p-6">
-                <!-- <img
+                <img
                     v-if="imgUrl"
                     :src="imgSrc"
                     :alt="`Immagine di ${product.title}`"
                     class="max-w-full max-h-full object-contain object-center"
-                /> -->
+                />
             </div>
 
             <div class="flex flex-col gap-6">

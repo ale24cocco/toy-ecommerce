@@ -64,7 +64,7 @@ const isAuthenticated = computed(() => !!user.value);
         </div>
     </header>
 
-    <main class="flex">
+    <main class="flex py-6">
         <slot />
     </main>
 

@@ -31,7 +31,11 @@ const imgSrc = computed(() =>
         </div>
 
         <div class="w-50">
-            <NuxtLink :to="{ name: 'product-id', params: { id: product.id } }"
+            <NuxtLink
+                :to="{
+                    name: 'product-id',
+                    params: { id: props.product.documentId },
+                }"
                 ><h2 class="text-lg font-semibold hover:text-blue-700">
                     {{ product.title }}
                 </h2></NuxtLink
